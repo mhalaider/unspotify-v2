@@ -10,7 +10,7 @@ void on_attach()
     }
 
     // @note: just sleep. why not
-    Sleep(1000);
+    Sleep(4000);
 
 #ifdef _DEBUG
 	AllocConsole();
@@ -28,7 +28,7 @@ void on_attach()
     FreeConsole();
     if(_old_out)
     {
-        SetStdHandle(STD_OUTPUT_HANDLE, _old_out);
+       SetStdHandle(STD_OUTPUT_HANDLE, _old_out);
     }
 #endif
 }

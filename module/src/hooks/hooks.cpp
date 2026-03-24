@@ -14,7 +14,7 @@ void c_hooks::init() const
     std::printf("[hook_mgr] starting hooks setup...\n");
 
     const auto spotify_mod = static_cast<void*>(GetModuleHandleA("Spotify.dll"));
-    std::printf("[main] spotify.dll -> 0x%p\n", spotify_mod);
+    std::printf("[hook_mgr] spotify.dll -> 0x%p\n", spotify_mod);
 
     // @note: basic init
     {

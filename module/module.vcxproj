@@ -47,7 +47,7 @@
     <OutDir>..\output\$(Configuration)\</OutDir>
     <IntDir>..\output\$(Configuration)\logs-m\</IntDir>
     <TargetName>spot-$(ProjectName)-$(Configuration)</TargetName>
-    <IncludePath>$(ProjectDir)deps\;$(ProjectDir)deps\pch\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)deps\;$(ProjectDir)deps\pch\;$(ProjectDir)src\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <OutDir>..\output\$(Configuration)\</OutDir>

@@ -23,10 +23,10 @@ struct spotify_track_meta_t
 		{
 			if(track_title_length() >= 16)
 			{
-				return track_title_array().data();
+				return track_title_ptr();
 			}
 
-			return track_title_ptr();
+			return track_title_array().data();
 		}
 	};
 	wrapper_spotify_track_t* m_wrapped;

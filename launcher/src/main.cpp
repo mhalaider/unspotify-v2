@@ -12,19 +12,25 @@ int main() {
     if (!CreateProcessA(exe_path, NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi)) {
         std::printf("[main] unable to create process, error code: %d\n", GetLastError());
         system("pause");
-        goto END;
+        return EXIT_FAILURE;
     }
 
-    std::printf("[main] injecting spot-module.dll\n");
-    if (!injector::inject(pi.hProcess, "spot-module.dll")) {
+    std::string module_name{};
+
+#ifdef _DEBUG
+    module_name = "spot-module-debug.dll";
+#else
+    module_name = "spot-module.dll";
+#endif
+
+    std::printf("[main] injecting %s\n", module_name.c_str());
+    if (!injector::inject(pi.hProcess, module_name.c_str())) {
         std::printf("[main] unable to inject module, error code: %d\n", GetLastError());
         TerminateProcess(pi.hProcess, 0x0);
         system("pause");
-        goto END;
+        return EXIT_FAILURE;
     }
 
     ResumeThread(pi.hThread);
-
-END:
     return EXIT_SUCCESS;
 }
